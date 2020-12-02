@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  mongodb:
+    container_name: db
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: sanfrantokyo
+    image: mongo:latest
+
+    #host:container
+    ports:
+      - '7000:27017'
+    # volumes:
+    #   # - $HOME/.aws/config:/root/.aws/config
+    #   # - $HOME/.aws/credentials:/root/.aws/credentials
