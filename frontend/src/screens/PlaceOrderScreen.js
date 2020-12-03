@@ -38,6 +38,7 @@ const PlaceOrderScreen = ({ history }) => {
   const { order, success, error } = orderCreate
 
   useEffect(() => {
+    console.log(orderCreate)
     if (success) {
       history.push(`/order/${order._id}`)
       dispatch({ type: USER_DETAILS_RESET })

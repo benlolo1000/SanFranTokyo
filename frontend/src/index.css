@@ -1,9 +1,11 @@
 main {
   min-height: 80vh;
+  background-image: linear-gradient(to bottom right, white, #e3e3e3);
 }
 
 h3 {
   padding: 1rem 0;
+  font-size: 1rem;
 }
 
 h1 {
@@ -32,14 +34,16 @@ h2 {
 }
 
 .carousel-caption h2 {
-  color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  color: rgb(141, 42, 42);
+  background-color: white;
 }
 
 .carousel img {
-  height: 300px;
-  padding: 30px;
-  margin: 40px;
-  border-radius: 50%;
+  height: 200px;
+  margin: 100px 40px 60px 40px;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   margin-left: auto;
   margin-right: auto;
 }
@@ -50,4 +54,7 @@ h2 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+}
+.navbar-brand {
+  display: contents;
 }

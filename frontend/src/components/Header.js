@@ -18,10 +18,18 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar style={{padding: "1%", borderBottom:"3px solid #BA3345"}}bg="light" expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>ProShop</Navbar.Brand>
+            <Navbar.Brand href="/">
+              <img
+              className="logo"
+              width = "150px" 
+              style={{marginRight:"20%"}}
+              src = {require('../logo.png')} 
+              alt = "SanFranToyko">
+              </img>
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
