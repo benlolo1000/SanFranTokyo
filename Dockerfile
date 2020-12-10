@@ -14,7 +14,7 @@ COPY package*.json /usr/src/sanfrantokyo/
 
 RUN npm i
 
-# copy our entire local directory into our created folder to bundle our app souce code
+## copy our entire local directory into our created folder to bundle our app souce code
 COPY ./ ./
 
 EXPOSE 3000
@@ -24,4 +24,4 @@ CMD [ "npm", "run", "dev" ]
 
 FROM nginx
 EXPOSE 80
-COPY --from=builder /usr/src/sanfrantokyo/frontend/build/ /usr/share/nginx/html/
+COPY ./frontend/build/ /usr/share/nginx/html/
