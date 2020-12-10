@@ -1,0 +1,64 @@
+version: '3.1'
+services:
+  # api:
+  #   container_name: api
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   build:
+  #     context: ./
+  #     dockerfile: ./Dockerfile
+  #   image: api
+  #   ports:
+  #     - '5000:5000'
+  # volumes:
+  #   - ./api/config:/usr/src/sanfrantokyo-api/config/
+  #   - ./api/test:/usr/src/sanfrantokyo-api/test/
+  #   - ./api/common:/usr/src/sanfrantokyo-api/common/
+  #   - ./api/models:/usr/src/sanfrantokyo-api/models/
+  #   - ./api/email:/usr/src/sanfrantokyo-api/email/
+  #   # - api/./mongo:/usr/src/sanfrantokyo-api/mongo/
+  #   - ./api/routes:/usr/src/sanfrantokyo-api/routes/
+  #   # - api/./seed-db:/usr/src/sanfrantokyo-api/seed-db/
+  #   - ./api/app.js:/usr/src/sanfrantokyo-api/app.js
+  #   # - $HOME/.aws/config:/root/.aws/config
+  #   # - $HOME/.aws/credentials:/root/.aws/credentials
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    image: frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/usr/src/sanfrantokyo/src/
+
+  db:
+    container_name: db
+    restart: always
+    build:
+      context: ./db
+      dockerfile: ./Dockerfile
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: sanfrantokyo
+    image: mongo:latest
+
+    #host:container
+    ports:
+      - '7000:27017'
+
+  reverse-proxy:
+    image: nginx:1.17.10
+    container_name: reverse_proxy
+    depends_on:
+      # - api
+      - frontend
+      - db
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
