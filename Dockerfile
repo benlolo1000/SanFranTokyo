@@ -51,4 +51,7 @@ CMD [ "npm", "run", "dev" ]
 FROM nginx
 EXPOSE 80
 COPY ./frontend/build/ /usr/share/nginx/html/
+<<<<<<< HEAD
+>>>>>>> f073ee32afef443e48fef4e6ac71c2c36867b0ba
+=======
 >>>>>>> f073ee32afef443e48fef4e6ac71c2c36867b0ba
