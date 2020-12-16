@@ -22,3 +22,4 @@ CMD [ "npm", "run", "dev" ]
 FROM nginx
 EXPOSE 80
 COPY /frontend/build/ /usr/share/nginx/html/
+
